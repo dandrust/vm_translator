@@ -3,14 +3,15 @@ FunctionCalls:
   - translator throws and exception if Sys.init file is not present)
   - doing this should be overwritted with a bootstrap: false option for backwards compatibility
   
-- Line parsing needs to recognize these commands
+- VmTranslator doesn't take a file, it takes a directory and translates all .vm files in the directory
+  
+x Line parsing needs to recognize these commands
 
 - function declaration
-  - create a label in the assembly
+  x create a label in the assembly
   - make sure that translator internals are aware that translation is happeneing within a function (for other labels)
   - Modify label to add in a function name if it needs to
-  - *Figure out number of local variables
-  - Clear out values at LCL arg.size.times
+  x Clear out values at LCL arg.size.times
   
 - call 
   - see details on p 163

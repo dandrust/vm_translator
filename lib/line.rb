@@ -11,14 +11,6 @@ class Line
   class << self
     attr_reader :file_name, :string
 
-    CODE_CLASSES = {
-      push: Instruction::Push,
-      pop: Instruction::Pop,
-      label: ProgramFlow::Label,
-      goto: ProgramFlow::Goto,
-      'if-goto': ProgramFlow::IfGoto
-    }.freeze
-
     def parse(string, translator)
       @file_name = translator.file_name
       @string = string.chomp.strip
@@ -36,7 +28,14 @@ class Line
     end
 
     def code_class_for(verb)
-      CODE_CLASSES[verb.to_sym] || Instruction::Arithmetic
+      case verb.to_sym
+      when :push      then Instruction::Push
+      when :pop       then Instruction::Pop
+      when :label     then ProgramFlow::Label
+      when :goto      then ProgramFlow::Goto
+      when :'if-goto' then ProgramFlow::IfGoto
+      else                 Instruction::Arithmetic
+      end
     end
 
     def irrelevant?
@@ -44,8 +43,7 @@ class Line
     end
 
     def parse_string
-      regex = /^(?<operation>[\w-]*)\s*(?<segment>\w*)\s*(?<index>\w*)\s*/
-      string.match(regex)
+      string.match(/^(?<operation>[\w-]*)\s*(?<segment>\w*)\s*(?<index>\w*)\s*/)
     end
   end
 end

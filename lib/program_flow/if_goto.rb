@@ -4,7 +4,7 @@ class ProgramFlow
     def to_assembly
       <<~CODE
       @SP
-      A=M-1
+      AM=M-1
       D=M
       @#{sanitize_file_name}.#{label}
       D;JNE

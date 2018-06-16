@@ -34,6 +34,9 @@ class Line
       when :label     then ProgramFlow::Label
       when :goto      then ProgramFlow::Goto
       when :'if-goto' then ProgramFlow::IfGoto
+      when :function  then FunctionCall::Function
+      when :call      then FunctionCall::Call
+      when :return    then FunctionCall::Return
       else                 Instruction::Arithmetic
       end
     end

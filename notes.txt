@@ -1,0 +1,21 @@
+FunctionCalls:
+- Automatically add bootstrap code
+  - translator throws and exception if Sys.init file is not present)
+  - doing this should be overwritted with a bootstrap: false option for backwards compatibility
+  
+- Line parsing needs to recognize these commands
+
+- function declaration
+  - create a label in the assembly
+  - make sure that translator internals are aware that translation is happeneing within a function (for other labels)
+  - Modify label to add in a function name if it needs to
+  - *Figure out number of local variables
+  - Clear out values at LCL arg.size.times
+  
+- call 
+  - see details on p 163
+  - will need unique return address label with a class instance counter
+  - can probably build this reusing lower-level push/pop stuff already written
+  
+- return 
+  - see details on p 163

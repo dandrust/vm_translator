@@ -1,0 +1,14 @@
+class ProgramFlow
+  # Translates `if-goto` statements
+  class IfGoto < ProgramFlow
+    def to_assembly
+      <<~CODE
+      @SP
+      A=M-1
+      D=M
+      @#{sanitize_file_name}.#{label}
+      D;JNE
+      CODE
+    end
+  end
+end

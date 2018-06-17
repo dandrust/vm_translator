@@ -85,6 +85,7 @@ class Line
   end
 end
 
-require_relative 'instruction'
-require_relative 'program_flow'
 require_relative 'comment'
+require_relative 'instruction'
+require_relative 'function_call'
+require_relative 'program_flow'

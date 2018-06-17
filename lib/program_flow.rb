@@ -6,11 +6,10 @@ class ProgramFlow < Line
     _, @label = *args
     @function = Line.function
   end
-  
-  def in_function?
-    !!self.function
-  end
 
+  def in_function?
+    !function.nil?
+  end
 end
 
 require_relative 'program_flow/goto'

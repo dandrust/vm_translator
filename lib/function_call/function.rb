@@ -5,6 +5,7 @@ class FunctionCall
       super
       Line.enter_function(@function_name)
     end
+
     def to_assembly
       <<~CODE
       (#{function_name})

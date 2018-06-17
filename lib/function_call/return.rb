@@ -27,7 +27,7 @@ class FunctionCall
       D=M // return value is now in D
       @ARG
       A=M
-      M=D 
+      M=D
 
       // SP = ARG+1
       @ARG

@@ -6,7 +6,7 @@ class ProgramFlow
       @SP
       AM=M-1
       D=M
-      @#{sanitize_file_name}.#{label}
+      @#{sanitize_file_name}.#{"#{function}$" if in_function?}#{label}
       D;JNE
       CODE
     end

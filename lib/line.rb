@@ -9,12 +9,20 @@ class Line
   end
 
   class << self
-    attr_reader :file_name, :string
+    attr_reader :file_name, :string, :function
 
     def parse(string, translator)
       @file_name = translator.file_name
       @string = string.chomp.strip
       generate_code
+    end
+
+    def enter_function(function_name)
+      @function = function_name.to_sym
+    end
+
+    def leave_function!
+      @function = nil
     end
 
     private

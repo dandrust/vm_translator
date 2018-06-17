@@ -1,6 +1,10 @@
 class FunctionCall
   # Translates function declaration
   class Function < FunctionCall
+    def initialize(*args)
+      super
+      Line.enter_function(@function_name)
+    end
     def to_assembly
       <<~CODE
       (#{function_name})

@@ -29,14 +29,40 @@ class Line
 
     def code_class_for(verb)
       case verb.to_sym
-      when :push      then Instruction::Push
-      when :pop       then Instruction::Pop
-      when :label     then ProgramFlow::Label
+      when program_flow?  then program_flow(verb)
+      when function_call? then function_call(verb)
+      else                     instruction(verb)
+      end
+    end
+
+    def program_flow?
+      ->(verb) { %i[label goto if-goto].include?(verb.to_sym) }
+    end
+
+    def function_call?
+      ->(verb) { %i[function call return].include?(verb.to_sym) }
+    end
+
+    def program_flow(verb)
+      case verb.to_sym
       when :goto      then ProgramFlow::Goto
       when :'if-goto' then ProgramFlow::IfGoto
+      when :label     then ProgramFlow::Label
+      end
+    end
+
+    def function_call(verb)
+      case verb.to_sym
       when :function  then FunctionCall::Function
       when :call      then FunctionCall::Call
       when :return    then FunctionCall::Return
+      end
+    end
+
+    def instruction(verb)
+      case verb.to_sym
+      when :push      then Instruction::Push
+      when :pop       then Instruction::Pop
       else                 Instruction::Arithmetic
       end
     end

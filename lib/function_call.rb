@@ -1,8 +1,8 @@
 # Translates function call lines
 class FunctionCall < Line
   attr_reader :operation, :function_name, :argument_size
-  
-  def initialize(@args)
+
+  def initialize(*args)
     @operation, @function_name, @argument_size = *args
   end
 end

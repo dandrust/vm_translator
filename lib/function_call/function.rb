@@ -6,7 +6,7 @@ class FunctionCall
       (#{function_name})
       // Load argument size to R13
       @#{argument_size || 0}
-      D=A   
+      D=A
       @END
       D;JEQ // Jump to end if no arguments exist
       @R13 // This is general purpose register for vm implementation
@@ -14,7 +14,7 @@ class FunctionCall
       // Beginning of loop
       (CLEAR_LCL)
       // business
-      push 0 
+      push 0
       // Conditional jump if argument size counter is greater than zero
       @R13 // counter stored here
       DM=M-1 // load counter into D register

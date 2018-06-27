@@ -4,6 +4,7 @@ class FunctionCall < Line
 
   def initialize(*args)
     @operation, @function_name, @argument_size = *args
+    super
   end
 end
 

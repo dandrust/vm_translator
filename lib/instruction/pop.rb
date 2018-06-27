@@ -3,6 +3,7 @@ class Instruction
   class Pop < Instruction
     def initialize(*args)
       @operation, @segment, @index = *args
+      super
     end
 
     # TODO: Optimize for index = 0, = 1

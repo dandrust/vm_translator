@@ -11,6 +11,10 @@ class Instruction < Line
     temp: '5'
   }.freeze
 
+  def initialize(*args)
+    super
+  end
+
   def base_address?
     !%i[pointer temp].include?(segment)
   end

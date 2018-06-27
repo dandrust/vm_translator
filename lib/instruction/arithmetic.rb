@@ -24,6 +24,7 @@ class Instruction
 
     def initialize(*args)
       @operation, = *args
+      super
     end
 
     def to_assembly

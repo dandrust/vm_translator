@@ -5,6 +5,7 @@ class ProgramFlow < Line
   def initialize(*args)
     _, @label = *args
     @function = Line.function
+    super
   end
 
   def in_function?

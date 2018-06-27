@@ -3,5 +3,6 @@ class Comment < Line
   attr_reader :string
   def initialize(string)
     @string = string
+    super
   end
 end

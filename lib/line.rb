@@ -1,5 +1,11 @@
 # Singleton factory and prototype class for instructions and program flow lines
 class Line
+  attr_reader :file_name
+
+  def initialize(*args)
+    @file_name = Line.file_name
+  end
+
   def sanitize_file_name
     Line.file_name.match(%r{/(?<name>\w*)\.vm})[:name]
   end

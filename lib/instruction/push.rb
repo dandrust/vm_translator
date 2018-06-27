@@ -3,6 +3,7 @@ class Instruction
   class Push < Instruction
     def initialize(*args)
       @operation, @segment, @index = *args
+      super
     end
 
     def to_assembly

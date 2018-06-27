@@ -19,7 +19,7 @@ class FunctionCall
       // Beginning of loop
       (CLEAR_LCL)
       // business
-      push 0
+      #{Line.parse('push 0', file_name).to_assembly}
       // Conditional jump if argument size counter is greater than zero
       @R13 // counter stored here
       DM=M-1 // load counter into D register

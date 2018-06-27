@@ -7,7 +7,7 @@ class Line
   end
 
   def sanitize_file_name
-    Line.file_name.match(%r{/(?<name>\w*)\.vm})[:name]
+    file_name.match(/(?<name>\w*)\.vm/)[:name]
   end
 
   def writable?
@@ -86,7 +86,7 @@ class Line
     end
 
     def parse_string
-      string.match(/^(?<operation>[\w-]*)\s*(?<segment>\w*)\s*(?<index>\w*)\s*/)
+      string.match(/^(?<operation>[\w-]*)\s*(?<segment>[\w\.:]*)\s*(?<index>\w*)\s*/)
     end
   end
 end

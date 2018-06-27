@@ -12,7 +12,6 @@ class VmTranslator
     @directory = directory
     @lines = []
     @files = Dir.glob('*.vm')
-    binding.pry
   end
 
   def parse

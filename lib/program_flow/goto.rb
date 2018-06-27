@@ -3,7 +3,7 @@ class ProgramFlow
   class Goto < ProgramFlow
     def to_assembly
       <<~CODE
-      @#{sanitize_file_name}.#{"#{function}$" if in_function?}#{label}
+      @#{in_function? ? "#{function}$" : "#{sanitize_file_name}."}#{label}
       0;JMP
       CODE
     end

@@ -17,8 +17,8 @@ class Line
   class << self
     attr_reader :file_name, :string, :function
 
-    def parse(string, translator)
-      @file_name = translator.file_name
+    def parse(string, current_file_name)
+      @file_name = current_file_name
       @string = string.chomp.strip
       generate_code
     end

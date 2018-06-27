@@ -13,7 +13,7 @@ describe 'chapter 8 tests' do
     end
   end
 
-  skip 'FunctionCalls' do
+  context 'FunctionCalls' do
     context 'FibonacciElement' do
       it_behaves_like 'a successful task', '08/FunctionCalls/FibonacciElement'
     end

@@ -9,14 +9,18 @@ x Line parsing needs to recognize these commands
 
 - function declaration
   x create a label in the assembly
-  - make sure that translator internals are aware that translation is happeneing within a function (for other labels)
-  - Modify label to add in a function name if it needs to
+  x make sure that translator internals are aware that translation is happeneing within a function (for other labels)
+  x Modify label to add in a function name if it needs to
   x Clear out values at LCL arg.size.times
   
 - call 
-  - see details on p 163
-  - will need unique return address label with a class instance counter
-  - can probably build this reusing lower-level push/pop stuff already written
+  x see details on p 163
+  x will need unique return address label with a class instance counter
+  x can probably build this reusing lower-level push/pop stuff already written
   
 - return 
-  - see details on p 163
+  x see details on p 163
+  
+  
+UP NEXT:
+ - Working on accepting multiple files. Just made it so that each line instance is aware of the file name it's in. However, running `rspec ./spec/ecs_chapter_08_spec.rb:17` still fails.  Something is wrong with the assembly and the cpu emulator won't run the script

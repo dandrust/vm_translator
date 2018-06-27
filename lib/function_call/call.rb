@@ -2,7 +2,7 @@ class FunctionCall
   # Translates call instruction
   class Call < FunctionCall
     class << self
-      attr_reader :return_counter
+      attr_accessor :return_counter
     end
 
     @return_counter = 0
@@ -18,10 +18,10 @@ class FunctionCall
       A=M-1          // Put stack address in A register
       M=D            // Write contant to stack
 
-      #{push_segment_pointers_to_stack(:LCL)}
-      #{push_segment_pointers_to_stack(:ARG)}
-      #{push_segment_pointers_to_stack(:THIS)}
-      #{push_segment_pointers_to_stack(:THAT)}
+      #{push_segment_pointer_to_stack(:LCL)}
+      #{push_segment_pointer_to_stack(:ARG)}
+      #{push_segment_pointer_to_stack(:THIS)}
+      #{push_segment_pointer_to_stack(:THAT)}
 
       // Set ARG back up the stack
       @5

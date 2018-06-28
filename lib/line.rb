@@ -2,7 +2,7 @@
 class Line
   attr_reader :file_name
 
-  def initialize(*args)
+  def initialize(*)
     @file_name = Line.file_name
   end
 
@@ -36,7 +36,7 @@ class Line
     def generate_code
       return ::Comment.new(string) if irrelevant?
 
-      _, verb, noun, arg = *parse_string.to_a
+      /^(?<verb>[\w-]*)\s*(?<noun>[\w\.:]*)\s*(?<arg>\w*)\s*/ =~ string
 
       code_class_for(verb).new(verb, noun, arg)
     end
@@ -83,10 +83,6 @@ class Line
 
     def irrelevant?
       string.empty? || string.nil? || string.match(%r{^//})
-    end
-
-    def parse_string
-      string.match(/^(?<operation>[\w-]*)\s*(?<segment>[\w\.:]*)\s*(?<index>\w*)\s*/)
     end
   end
 end

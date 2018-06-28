@@ -26,7 +26,7 @@ class FunctionCall
       // Set ARG back up the stack
       @5
       D=A
-      @{argument_size}
+      @#{argument_size}
       D=D+A
       @SP
       D=M-D

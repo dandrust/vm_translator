@@ -1,45 +1,32 @@
 #!/usr/bin/env ruby
 
-require_relative 'lib/line'
-require 'pry'
-
-# Entry point for translator
-class VmTranslator
-  attr_reader :directory, :files
-
-  def initialize(directory)
-    Dir.chdir(directory)
-    @directory = directory
-    @lines = []
-    @files = Dir.glob('*.vm')
-  end
-
-  def parse
-    files.each do |file_name|
-      File.open(file_name, 'r') do |file|
-        while (line = file.gets)
-          @lines << Line.parse(line, file_name)
-        end
+# Configuration module
+module VmTranslator
+  def self.setup(options = {})
+    @configuration ||= Configuration.new
+    if block_given?
+      yield @configuration
+    else
+      options.each do |k, v|
+        @configuration.send(:"#{k}=", v)
       end
     end
-    self
   end
 
-  def write
-    file_name = "#{directory.split('/').last}.asm"
-    File.open(file_name, 'w') do |file|
-      @lines.each do |code|
-        file.puts(code.to_assembly) if code.writable?
-      end
+  def self.configuration
+    @configuration
+  end
+
+  # Configuration class
+  class Configuration
+    attr_accessor :apply_bootstrap_code
+
+    def initialize
+      @apply_bootstrap_code = true
     end
-    self
   end
-
-  def self.translate(directory)
-    new(directory)
-      .parse
-      .write
-  end
+  setup
 end
 
-# VmTranslator.translate(ARGV[0]) if ARGV[0]
+require 'pry'
+require_relative 'lib/translator'

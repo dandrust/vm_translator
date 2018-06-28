@@ -15,16 +15,22 @@ describe 'chapter 8 tests' do
 
   context 'FunctionCalls' do
     context 'FibonacciElement' do
-      it_behaves_like 'a successful task', '08/FunctionCalls/FibonacciElement'
+      it_behaves_like 'a successful task',
+                      '08/FunctionCalls/FibonacciElement',
+                      apply_bootstrap_code: true
     end
     context 'NestedCall' do
-      it_behaves_like 'a successful task', '08/FunctionCalls/NestedCall'
+      it_behaves_like 'a successful task',
+                      '08/FunctionCalls/NestedCall',
+                      apply_bootstrap_code: true
     end
     context 'SimpleFunction' do
       it_behaves_like 'a successful task', '08/FunctionCalls/SimpleFunction'
     end
     context 'StaticsTest' do
-      it_behaves_like 'a successful task', '08/FunctionCalls/StaticsTest'
+      it_behaves_like 'a successful task',
+                      '08/FunctionCalls/StaticsTest',
+                      apply_bootstrap_code: true
     end
   end
 end

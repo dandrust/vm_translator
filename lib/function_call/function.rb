@@ -22,7 +22,8 @@ class FunctionCall
       #{Line.parse('push constant 0', sanitize_file_name).to_assembly}
       // Conditional jump if argument size counter is greater than zero
       @R13 // counter stored here
-      DM=M-1 // load counter into D register
+      M=M-1 // decrement counter
+      D=M  // load counter into D register
       @CLEAR_LCL // Load jump address
       D;JGT // Since we're counting down, jump to the beginning of the loop if it's greater than zero still
       (END)

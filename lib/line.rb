@@ -27,10 +27,6 @@ class Line
       @function = function_name.to_sym
     end
 
-    def leave_function!
-      @function = nil
-    end
-
     private
 
     def generate_code

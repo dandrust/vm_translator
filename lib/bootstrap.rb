@@ -1,8 +1,8 @@
 # Module including bootstrap code
 module Bootstrap
-  def bootstrap_bode
+  def bootstrap_code
     <<~CODE
-    @256 // Set SP to 256
+    @261 // Set SP to 256
     D=A
     @SP
     M=D

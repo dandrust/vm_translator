@@ -35,7 +35,7 @@ class Translator
   def write
     file_name = "#{directory.split('/').last}.asm"
     File.open(file_name, 'w') do |file|
-      file.puts(bootstrap_bode) if config.apply_bootstrap_code
+      file.puts(bootstrap_code) if config.apply_bootstrap_code
       @lines.each do |code|
         file.puts(code.to_assembly) if code.writable?
       end
